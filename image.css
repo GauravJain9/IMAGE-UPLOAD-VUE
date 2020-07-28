@@ -1,0 +1,108 @@
+.image-input__input 
+{ 
+  position: absolute;
+  top: -10px; left: -10px;
+
+  width: 9px;
+  height: 9px;
+
+  cursor: pointer;
+}
+
+.image-input__container {
+  position: absolute;
+  overflow: hidden;
+
+  border: 1px dashed #FFF;
+  
+  box-sizing: border-box; /* display border inside */
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  &:hover {
+    border: 1px solid #7FCC29;
+    transition: 0.15s border;
+
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/424395/camera.svg");
+    background-size: 50px 41px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+.image-input__overlay 
+{
+  position: absolute;
+  top: 0; left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  cursor: pointer;
+
+  .image-loaded & {
+    display: none;
+  }
+}
+
+.image-input__control-buttons 
+{
+  display: none;
+
+  .image-loaded & { display: block; }
+
+  position: absolute;
+  top: 5px; left: 5px;
+
+  button {
+    margin: 0; padding: 0;
+    width: 25px; height: 25px;
+  }
+}
+
+.image-input__canvas {
+  &.is-draggable {
+    cursor: move;
+  }
+}
+
+
+body { 
+  color: #FFF;
+  background-color: #533A71;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 { margin-bottom: 0; }
+.sub { 
+  font-style: italic; 
+  font-weight: 300;
+}
+
+.app-container { 
+  margin: 0 auto; 
+  min-width: 650px;
+  max-width: 800px;
+}
+#app { position: relative; }
+
+.image-uploader {
+  position: absolute;
+  margin: 20px 10px;
+  left: 0;
+}
+
+.text-area-section {
+  position: absolute;
+  margin: 20px 10px;
+  padding: 0;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  right: 0;
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+}
