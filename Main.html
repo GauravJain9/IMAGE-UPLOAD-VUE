@@ -1,0 +1,46 @@
+<main class="app-container">
+  
+  <h1>VueJS + HTML5 Canvas</h1>
+  <span class="sub">Image upload, resize, crop, and base64 converter</span>
+  
+  <div id="app">
+    <image-uploader 
+      width="300px" 
+      height="200px">
+    </image-uploader>
+    <section class="text-area-section">
+      <textarea 
+        v-model="sharedData.imageData">
+      </textarea>
+    </section>
+  </div>
+</main>
+
+<!-- -->
+<script type="text/x-template" id="image-uploader-template">
+<div class="image-input__container image-uploader" 
+	v-bind:style="containerStyles" 
+  v-bind:class="{ 'image-loaded': isImageLoaded }">
+
+    <!-- Hidden input we use to access file contents -->
+    <form class="image-input__form" ref="form">
+      <input @change="previewThumbnail" class="image-input__input" ref="fileInput" type="file" />
+    </form>
+    <div v-on:click="triggerInput" class="image-input__overlay"></div>
+    <div class="image-input__control-buttons">
+    	<button v-on:click="toBase64" type="button" class="to-base64">64</button>
+      <button v-on:click="scaleUp" type="button" class="scale-up">+</button>
+      <button v-on:click="scaleDown" type="button" class="scale-down">-</button>
+      <button v-on:click="resetInput" type="button" class="reset-input">x</button>
+    </div>
+
+    <!-- Used in place of an image tag -->
+    <canvas class="image-input__canvas"
+      ref="canvas"
+      v-bind:height="height"
+      v-bind:width="width"
+      v-bind:class="{ 'is-draggable': hoverIsDraggable }">
+    </canvas>
+
+  </div>
+</script>
